@@ -12,6 +12,10 @@ cache:
 node_js:
   - "10"
 
+install:
+  - npm install
+  - npm install hexo-deployer-git --save
+
 before_script:
   - npm install
   - hexo cl
@@ -26,4 +30,4 @@ deploy:
   local-dir: public
   keep-history: false
   on:
-    branch: master
+    branch: hexo
