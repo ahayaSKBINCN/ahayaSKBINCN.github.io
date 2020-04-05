@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 沐  风  戴  雨
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: spring_妬妎
+language: zh-CN
 timezone: ''
 
 # URL
@@ -93,7 +93,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: lite
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

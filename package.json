@@ -1,5 +1,5 @@
 {
-  "name": "hexo-site",
+  "name": "ahaya.github.io",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": ""
+    "version": "4.2.0"
   },
   "dependencies": {
     "hexo": "^4.0.0",
