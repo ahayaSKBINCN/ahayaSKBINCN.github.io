@@ -1,10 +1,11 @@
 ---
-title: react-native Animated
+title: react-native 动画
 date: 2020-04-15 21:15:46
 tags: react-native Animated
 ---
 
-## react native animated
+## react-native 动画
+
 最近在项目中需要实现一个 [ScrollView][2] 的吸顶效果;
 最开始的时候打算直接用 [ScrollView][2] 的 onScroll 方法动态设置 吸顶的高度;
 ``` javascript 
@@ -76,10 +77,6 @@ style = {[style, styles.container, { transform: [{ translateY }] }]}
 > 
 ```
 
-
-
-记录备用;
-资料传送门:
 
  [3]: https://www.jb51.net/article/162381.htm
  [1]: https://reactnative.dev/docs/animated
