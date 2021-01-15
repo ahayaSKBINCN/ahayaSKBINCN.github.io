@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="keywords" content="hexo, autumn" />
+    <title>
+        沐  风  戴  雨
+    </title>
+    <!-- favicon -->
+    
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/favicon.ico" />
+     
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- highlight -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
+    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad()
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@2.0.0/dist/main.js"></script>
+
+    <script>
+        infiniteScroll()
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const [
+                mainTitle,
+                mobileMenu,
+                mobileMainTitle,
+                mobileMenuBtn,
+                ipadMenuBtn,
+                aside,
+                closeBtn,
+            ] = getEle(
+                '#main-title',
+                '.mobile-menu',
+                '.mobile-menu h3',
+                '.mobile-menu button',
+                '.ipad-menu',
+                'aside',
+                'aside .close',
+            )
+            const io = new IntersectionObserver(entries => {
+                if (entries[0].intersectionRatio <= 0) {
+                    mobileMainTitle.classList.remove('invisibile')
+                } else {
+                    mobileMainTitle.classList.add('invisibile')
+                }
+            })
+            io.observe(mainTitle)
+
+            clickToggleAside(mobileMenuBtn)
+            clickToggleAside(ipadMenuBtn)
+            clickToggleAside(closeBtn, false)
+
+            const isMenuVisible = window.getComputedStyle(mobileMenu).display !== 'none'
+            if (isMenuVisible) document.body.style.background = 'none'
+
+            function getEle(...args) {
+                return args.map(arg => document.querySelector(arg))
+            }
+
+            function clickToggleAside(btn, show = true) {
+                btn.addEventListener('click', function () {
+                    if (show) {
+                        aside.style.display = 'block'
+                    } else {
+                        aside.style.display = 'none'
+                    }
+                })
+            }
+        })
+    </script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+    <div class="container">
+        <header class="header">
+    <nav class="mobile-menu" style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+        <h3 class="invisibile">
+            <a href="/" class="logo">
+                沐  风  戴  雨
+            </a>
+        </h3>
+        <button class="menu">menu</button>
+    </nav>
+
+    <button class="ipad-menu menu">menu</button>
+
+    <h1 class="title" id="main-title">
+        <a href="/" class="logo">
+            沐  风  戴  雨
+        </a>
+    </h1>
+    <h2 class="desc">
+        
+    </h2>
+
+    <div class="links">
+        <ul>
+            
+            <li>
+                <a href="https://github.com/ahayaSKBINCN" target="_blank" rel="noopener">
+                    Github
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</header>
+        <main class="main">
+            <article class="post">
+    
+    
+    
+    <h2 class="post-title">
+        keytool
+    </h2>
+    <ul class="post-date">
+        <li>
+            2021-01-15
+        </li>
+        <li>
+            spring_妬妎
+        </li>
+    </ul>
+    <div class="post-content">
+        <h2 id="写在开头"><a href="#写在开头" class="headerlink" title="写在开头"></a>写在开头</h2><p>转载自：[Keytool命令详解]<a href="https://blog.csdn.net/zlfing/article/details/77648430" target="_blank" rel="noopener">https://blog.csdn.net/zlfing/article/details/77648430</a><br>转载自用，方便查找。</p>
+<hr>
+<p><code>Keytool</code> 是一个<code>Java</code> 数据证书的管理工具 ,Keytool 将<code>密钥（key）</code>和<code>证书（certificates）</code>存在一个称为<code>keystore</code>的文件中 在<code>keystore</code>里，包含两种数据：<br><code>密钥实体（Key entity）</code>——<code>密钥（secret key）</code>又或者是<code>私钥</code>和配对<code>公钥</code>（采用非对称加密）<br>可信任的证书实体（trusted certificate entries）——只包含<code>公钥</code></p>
+<h3 id="ailas"><a href="#ailas" class="headerlink" title="ailas"></a>ailas</h3><hr>
+<p><code>ailas</code> (别名) 每个keystore都关联这一个独一无二的alias，这个alias通常不区分大小写</p>
+<h3 id="JDK中keytool-常用命令"><a href="#JDK中keytool-常用命令" class="headerlink" title="JDK中keytool 常用命令:"></a>JDK中<code>keytool</code> 常用命令:</h3><hr>
+<h5 id="genkey"><a href="#genkey" class="headerlink" title="-genkey"></a>-genkey</h5><p>在用户主目录中创建一个默认文件”.keystore”,还会产生一个mykey的别名，mykey中包含用户的公钥、私钥和证书<br>(在没有指定生成位置的情况下,keystore会存在用户系统默认目录，如：对于window xp系统，会生成在系统的C:/Documents and Settings/UserName/文件名为“.keystore”)</p>
+<h5 id="alias"><a href="#alias" class="headerlink" title="-alias"></a>-alias</h5><p>产生别名</p>
+<h5 id="keystore"><a href="#keystore" class="headerlink" title="-keystore"></a>-keystore</h5><p>指定密钥库的名称(产生的各类信息将不在.keystore文件中)</p>
+<h5 id="keyalg"><a href="#keyalg" class="headerlink" title="-keyalg"></a>-keyalg</h5><p>指定密钥的算法 (如 RSA  DSA（如果不指定默认采用DSA）)</p>
+<h5 id="validity"><a href="#validity" class="headerlink" title="-validity"></a>-validity</h5><p>指定创建的证书有效期多少天</p>
+<h5 id="keysize"><a href="#keysize" class="headerlink" title="-keysize"></a>-keysize</h5><p>指定密钥长度</p>
+<h5 id="storepass"><a href="#storepass" class="headerlink" title="-storepass"></a>-storepass</h5><p>指定密钥库的密码(获取keystore信息所需的密码)</p>
+<h5 id="keypass"><a href="#keypass" class="headerlink" title="-keypass"></a>-keypass</h5><p>指定别名条目的密码(私钥的密码)</p>
+<h5 id="dname"><a href="#dname" class="headerlink" title="-dname"></a>-dname</h5><p>指定证书拥有者信息 例如：  “CN=名字与姓氏,OU=组织单位名称,O=组织名称,L=城市或区域名称,ST=州或省份名称,C=单位的两字母国家代码”</p>
+<h5 id="list"><a href="#list" class="headerlink" title="-list"></a>-list</h5><p>显示密钥库中的证书信息<br><code>keytool -list -v -keystore 指定keystore -storepass 密码</code></p>
+<h5 id="v"><a href="#v" class="headerlink" title="-v"></a>-v</h5><p>显示密钥库中的证书详细信息</p>
+<h5 id="export"><a href="#export" class="headerlink" title="-export"></a>-export</h5><p>将别名指定的证书导出到文件<br><code>keytool -export -alias 需要导出的别名 -keystore 指定keystore -file 指定导出的证书位置及证书名称 -storepass 密码</code></p>
+<h5 id="file"><a href="#file" class="headerlink" title="-file"></a>-file</h5><p>参数指定导出到文件的文件名</p>
+<h5 id="delete"><a href="#delete" class="headerlink" title="-delete"></a>-delete</h5><p>删除密钥库中某条目<br><code>keytool -delete -alias 指定需删除的别  -keystore 指定keystore  -storepass 密码</code></p>
+<h5 id="printcert"><a href="#printcert" class="headerlink" title="-printcert"></a>-printcert</h5><p>查看导出的证书信息<br><code>keytool -printcert -file yushan.crt</code></p>
+<h5 id="keypasswd"><a href="#keypasswd" class="headerlink" title="-keypasswd"></a>-keypasswd</h5><p>修改密钥库中指定条目口令<br><code>keytool -keypasswd -alias 需修改的别名 -keypass 旧密码 -new  新密码  -storepass keystore密码  -keystore sage</code></p>
+<h5 id="storepasswd"><a href="#storepasswd" class="headerlink" title="-storepasswd"></a>-storepasswd</h5><p>修改keystore口令<br><code>keytool -storepasswd -keystore e:/ahaya.keystore(需修改口令的keystore) -storepass 123456(原始密码) -new ahaya(新密码)</code></p>
+<h5 id="import"><a href="#import" class="headerlink" title="-import"></a>-import</h5><p>将已签名数字证书导入密钥库<br><code>keytool -import -alias 指定导入条目的别名 -keystore 指定keystore -file 需导入的证书</code></p>
+<hr>
+<h3 id="下面是各选项的缺省值"><a href="#下面是各选项的缺省值" class="headerlink" title="下面是各选项的缺省值"></a>下面是各选项的缺省值</h3><p>-alias “mykey”</p>
+<p>-keyalg “DSA”</p>
+<p>-keysize 1024</p>
+<p>-validity 90</p>
+<p>-keystore 用户宿主目录中名为 .keystore 的文件</p>
+<p>-file 读时为标准输入，写时为标准输出</p>
+<hr>
+<h4 id="1、keystore的生成："><a href="#1、keystore的生成：" class="headerlink" title="1、keystore的生成："></a>1、keystore的生成：</h4><p>分阶段生成：</p>
+<p><code>keytool -genkey -alias ahaya(别名) -keypass ahaya(别名密码) -keyalg RSA(算法) -keysize 1024(密钥长度) -validity 365(有效期，天单位) -keystore
+e:/ahaya.keystore(指定生成证书的位置和证书名称) -storepass 123456(获取keystore信息的密码)</code>  </p>
+<p>回车输入相关信息即可；</p>
+<p>一次性生成：</p>
+<p><code>keytool -genkey -alias ahaya -keypass ahaya -keyalg RSA -keysize 1024 -validity 365 -keystore  e:/ahaya.keystore -storepass 123456 -dname &quot;CN=(名字与
+姓氏), OU=(组织单位名称), O=(组织名称), L=(城市或区域名称), ST=(州或省份名称), C=(单位的两字母国家代码)&quot;</code>(中英文即可)</p>
+<hr>
+<h4 id="2、keystore信息的查看："><a href="#2、keystore信息的查看：" class="headerlink" title="2、keystore信息的查看："></a>2、keystore信息的查看：</h4><p><code>keytool -list  -v -keystore e:/keytool /ahaya.keystore -storepass 123456</code><br>显示内容：</p>
+<hr>
+<p>Keystore 类型： JKS<br>Keystore 提供者： SUN</p>
+<p>您的 keystore 包含 1 输入</p>
+<p>别名名称： ahaya<br>创建日期： 20020-1-15<br>项类型: PrivateKeyEntry<br>认证链长度： 1<br>认证 [1]:<br>所有者:CN=ahaya, OU=xx公司, O=xx协会, L=pzh, ST=sc, C=cn<br>签发人:CN=ahaya, OU=xx公司, O=xx协会, L=pzg, ST=sc, C=cn<br>序列号:4a6f29ed<br>有效期: Wed Jul 29 00:40:13 CST 2009 至Thu Jul 29 00:40:13 CST 2010<br>证书指纹:<br>MD5:A3:D7:D9:74:C3:50:7D:10:C9:C2:47:B0:33:90:45:C3<br>SHA1:2B:FC:9E:3A:DF:C6:C4:FB:87:B8:A0:C6:99:43:E9:4C:4A:E1:18:E8<br>签名算法名称:SHA1withRSA<br>版本: 3</p>
+<hr>
+<p>缺省情况下，-list 命令打印证书的 MD5 指纹。而如果指定了 -v 选项，将以可读格式打印证书，如果指定了 -rfc 选项，将以可打印的编码格式输出证书。</p>
+<p><code>keytool -list  -rfc -keystore e:/ahaya.keystore -storepass 123456</code></p>
+<p>显示：</p>
+<hr>
+<p>Keystore 类型： JKS<br>Keystore 提供者： SUN</p>
+<p>您的 keystore 包含 1 输入</p>
+<p>别名名称： yushan<br>创建日期： 2009-7-29<br>项类型: PrivateKeyEntry<br>认证链长度： 1<br>认证 [1]:<br>—–BEGIN CERTIFICATE—–<br>MIICSzCCAbSgAwIBAgIESm8p7TANBgkqhkiG9w0BAQUFADBqMQ8wDQYDVQQGDAbkuK3lm70xDzAN<br>BgNVBAgMBua5luWNlzEPMA0GA1UEBwwG5rmY5r2tMREwDwYDVQQKDAh4eOWNj+S8mjERMA8GA1UE<br>CwwIeHjlhazlj7gxDzANBgNVBAMTBnl1c2hhbjAeFw0wOTA3MjgxNjQwMTNaFw0xMDA3MjgxNjQw<br>MTNaMGoxDzANBgNVBAYMBuS4reWbvTEPMA0GA1UECAwG5rmW5Y2XMQ8wDQYDVQQHDAbmuZjmva0x<br>ETAPBgNVBAoMCHh45Y2P5LyaMREwDwYDVQQLDAh4eOWFrOWPuDEPMA0GA1UEAxMGeXVzaGFuMIGf<br>MA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJoru1RQczRzTnBWxefVNspQBykS220rS8Y/oX3mZa<br>hjL4wLfOURzUuxxuVQR2jx7QI+XKME+DHQj9r6aAcLBCi/T1jwF8mVYxtpRuTzE/6KEZdhowEe70<br>liWLVE+hytLBHZ03Zhwcd6q5HUMu27du3MPQvqiwzTY7MrwIvQQ8iQIDAQABMA0GCSqGSIb3DQEB<br>BQUAA4GBAGoQQ1/FnTfkpQh+Ni6h3fZdn3sR8ZzDMbOAIYVLAhBb85XDJ8QZTarHbZMJcIdHxAl1<br>i08ct3E8U87V9t8GZFWVC4BFg/+zeFEv76SFpVE56iX7P1jpsu78z0m69hHlds77VJTdyfMSvtXv<br>sYHP3fxfzx9WyhipBwd8VPK/NgEP<br>—–END CERTIFICATE—–</p>
+<hr>
+<h4 id="3、证书的导出："><a href="#3、证书的导出：" class="headerlink" title="3、证书的导出："></a>3、证书的导出：</h4><p><code>keytool -export -alias yushan -keystore e:/yushan.keystore -file e:/yushan.crt(指定导出的证书位置及证书名称) -storepass 123456</code></p>
+<h4 id="4、查看导出的证书信息"><a href="#4、查看导出的证书信息" class="headerlink" title="4、查看导出的证书信息"></a>4、查看导出的证书信息</h4><p><code>keytool -printcert -file ahaya.crt</code><br>显示：（在windows下可以双击ahaya.crt查看）</p>
+<hr>
+<p>所有者:CN=yushan, OU=xx公司, O=xx协会, L=湘潭, ST=湖南, C=中国<br>签发人:CN=yushan, OU=xx公司, O=xx协会, L=湘潭, ST=湖南, C=中国<br>序列号:4a6f29ed<br>有效期: Wed Jul 29 00:40:13 CST 2009 至Thu Jul 29 00:40:13 CST 2010<br>证书指纹:<br>MD5:A3:D7:D9:74:C3:50:7D:10:C9:C2:47:B0:33:90:45:C3<br>SHA1:2B:FC:9E:3A:DF:C6:C4:FB:87:B8:A0:C6:99:43:E9:4C:4A:E1:18:E8<br>签名算法名称:SHA1withRSA<br>版本: 3</p>
+<hr>
+<h4 id="5、证书的导入："><a href="#5、证书的导入：" class="headerlink" title="5、证书的导入："></a>5、证书的导入：</h4><p>准备一个导入的证书：<br><code>keytool -genkey -alias ahaya -keypass ahaya -keyalg RSA -keysize 1024 -validity 365 -keystore  e:/ahaya.keystore -storepass 123456 -dname &quot;CN=ahaya,
+OU=xx, O=xx, L=xx, ST=xx, C=xx&quot;</code>  </p>
+<p><code>keytool -export -alias ahaya -keystore e:/ahaya.keystore -file e:/ahaya.crt -storepass 123456</code></p>
+<p>ahaya.crt 加入到ahaya.keystore中：<br><code>keytool -import -alias ahaya(指定导入证书的别名，如果不指定默认为mykey,别名唯一，否则导入出错) -file e:/ahaya.crt -keystore e:/ahaya.keystore -storepass 123456</code></p>
+<p><code>keytool -list  -v -keystore e:/keytool /ahaya.keystore -storepass 123456</code>  </p>
+<p>显示：</p>
+<hr>
+<p>Keystore 类型： JKS<br>Keystore 提供者： SUN</p>
+<p>您的 keystore 包含 2 输入</p>
+<p>别名名称： ahaya<br>创建日期： 2021-1-15<br>项类型: PrivateKeyEntry<br>认证链长度： 1<br>认证 [1]:<br>所有者:CN=ahaya, OU=xx公司, O=xx协会, L=湘潭, ST=湖南, C=中国<br>签发人:CN=ahaya, OU=xx公司, O=xx协会, L=湘潭, ST=湖南, C=中国<br>序列号:4a6f29ed<br>有效期: Wed Jul 29 00:40:13 CST 2009 至Thu Jul 29 00:40:13 CST 2010<br>证书指纹:<br>MD5:A3:D7:D9:74:C3:50:7D:10:C9:C2:47:B0:33:90:45:C3<br>SHA1:2B:FC:9E:3A:DF:C6:C4:FB:87:B8:A0:C6:99:43:E9:4C:4A:E1:18:E8<br>签名算法名称:SHA1withRSA<br>版本: 3</p>
+<hr>
+<p>别名名称： ahaya<br>创建日期： 2020-1-15<br>输入类型： trustedCertEntry</p>
+<p>所有者:CN=ahaya, OU=xx, O=xx, L=xx, ST=xx, C=xx<br>签发人:CN=ahaya, OU=xx, O=xx, L=xx, ST=xx, C=xx<br>序列号:4a6f2cd9<br>有效期: Wed Jul 29 00:52:41 CST 2009 至Thu Jul 29 00:52:41 CST 2010<br>证书指纹:<br>MD5:15:03:57:9B:14:BD:C5:50:21:15:47:1E:29:87:A4:E6<br>SHA1:C1:4F:8B:CD:5E:C2:94:77:B7:42:29:35:5C:BB:BB:2E:9E:F0:89:F5<br>签名算法名称:SHA1withRSA<br>版本: 3</p>
+<hr>
+<h4 id="6、证书条目的删除："><a href="#6、证书条目的删除：" class="headerlink" title="6、证书条目的删除："></a>6、证书条目的删除：</h4><p><code>keytool -delete -alias ahaya(指定需删除的别名) -keystore ahaya.keystore -storepass 123456</code></p>
+<h4 id="7、证书条目口令的修改："><a href="#7、证书条目口令的修改：" class="headerlink" title="7、证书条目口令的修改："></a>7、证书条目口令的修改：</h4><p><code>keytool -keypasswd -alias ahaya(需要修改密码的别名) -keypass ahaya(原始密码) -new 123456(别名的新密码)  -keystore e:/yushan.keystore -storepass 123456</code></p>
+<h4 id="8、keystore口令的修改："><a href="#8、keystore口令的修改：" class="headerlink" title="8、keystore口令的修改："></a>8、keystore口令的修改：</h4><p><code>keytool -storepasswd -keystore e:/yushan.keystore(需修改口令的keystore) -storepass 123456(原始密码) -new ahaya(新密码)</code></p>
+<h4 id="9、修改keystore中别名为ahaya的信息"><a href="#9、修改keystore中别名为ahaya的信息" class="headerlink" title="9、修改keystore中别名为ahaya的信息"></a>9、修改keystore中别名为ahaya的信息</h4><p><code>keytool -selfcert -alias ahaya -keypass ahaya -keystore e:/ahaya.keystore -storepass 123456 -dname &quot;cn=ahaya,ou=ahaya,o=ahaya,c=cn&quot;</code></p>
+
+    </div>
+</article>
+        </main>
+        <aside class="aside">
+            <div class="close"></div>
+            <section class="aside-section">
+                
+    <h1>Categories</h1>
+
+    
+
+            </section>
+            <section class="aside-section">
+                
+    <h1>Archives</h1>
+
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul>
+
+
+            </section>
+            <section class="aside-section tag">
+                
+    <h1>Tags</h1>
+
+    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keytool/" rel="tag">Keytool</a></li></ul>
+
+            </section>
+        </aside>
+    </div>
+</body>
+
+</html>
