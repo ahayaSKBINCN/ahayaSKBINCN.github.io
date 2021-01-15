@@ -19,11 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8597f860-3d2b-41cf-a53f-cd34990b0729" name="Default Changelist" comment="fix images">
-      <change afterPath="$PROJECT_DIR$/source/_posts/Android/keytool.md" afterDir="false" />
+    <list default="true" id="8597f860-3d2b-41cf-a53f-cd34990b0729" name="Default Changelist" comment="remove some post.&#10;add keytool command line usage.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/RN动画.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/helloworld.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/Android/keytool.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/Android/keytool.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +31,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectId" id="1lNGZ4iQOcmTmBL4XPc133uBtwy" />
   <component name="ProjectLevelVcsManager">
@@ -63,21 +65,6 @@
       <recent name="E:\work_space\ahayaSKBINCN.github.io\source\_posts\测试" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -91,7 +78,9 @@
       <updated>1607430187685</updated>
       <workItem from="1607430189104" duration="10000" />
       <workItem from="1607513445373" duration="4630000" />
-      <workItem from="1610677360527" duration="3930000" />
+      <workItem from="1610677360527" duration="4345000" />
+      <workItem from="1610683107954" duration="596000" />
+      <workItem from="1610685398628" duration="2532000" />
     </task>
     <task id="LOCAL-00001" summary="fix images">
       <created>1607515308728</created>
@@ -100,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607515308728</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="remove some post.&#10;add keytool command line usage.">
+      <created>1610682529391</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610682529392</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +117,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="fix images" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix images" />
+    <MESSAGE value="remove some post.&#10;add keytool command line usage." />
+    <option name="LAST_COMMIT_MESSAGE" value="remove some post.&#10;add keytool command line usage." />
   </component>
 </project>
